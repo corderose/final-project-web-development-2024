@@ -1,0 +1,242 @@
+DROP DATABASE IF EXISTS Parking_System;
+CREATE DATABASE Parking_System
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE Parking_System;
+
+
+-- Create Driver Table
+DROP TABLE IF EXISTS Driver;
+CREATE TABLE IF NOT EXISTS Driver (
+    DRIVER_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Type VARCHAR(50),
+    First_name VARCHAR(100),
+    Last_name VARCHAR(100),
+    Address VARCHAR(255),
+	Password VARCHAR(100),
+	Role VARCHAR(100),
+	Email VARCHAR(100)
+);
+
+-- Driver Table Test Data
+INSERT INTO Driver (Type, First_name, Last_name, Address, Password, Role, Email) VALUES
+('faculty', 'John', 'Doe', '123 University Ave, Salt Lake City, UT 84112', 'password123', 'admin', 'john.doe@university.edu'),
+('student', 'Jane', 'Smith', '456 Campus Blvd, Provo, UT 84604', 'password456', 'user', 'jane.smith@student.edu'),
+('guest', 'Alice', 'Johnson', '789 College Rd, Ogden, UT 84401', 'password789', 'user', 'alice.johnson@guest.edu'),
+('faculty', 'Bob', 'Brown', '101 Main St, Salt Lake City, UT 84112', 'password321', 'admin', 'bob.brown@university.edu'),
+('student', 'Mary', 'Davis', '202 Maple Dr, St. George, UT 84770', 'password654', 'user', 'mary.davis@student.edu'),
+('guest', 'James', 'Miller', '303 Oak Ln, Park City, UT 84060', 'password987', 'user', 'james.miller@guest.edu'),
+('faculty', 'Patricia', 'Wilson', '404 Pine St, Salt Lake City, UT 84112', 'password432', 'admin', 'patricia.wilson@university.edu'),
+('student', 'Michael', 'Moore', '505 Cedar Ave, Orem, UT 84057', 'password543', 'user', 'michael.moore@student.edu'),
+('guest', 'Linda', 'Taylor', '606 Birch Blvd, Draper, UT 84020', 'password654', 'user', 'linda.taylor@guest.edu'),
+('faculty', 'Charles', 'Anderson', '707 Elm St, Salt Lake City, UT 84112', 'password765', 'admin', 'charles.anderson@university.edu'),
+('student', 'Sarah', 'Thomas', '808 Maple Rd, Provo, UT 84604', 'password876', 'user', 'sarah.thomas@student.edu'),
+('guest', 'David', 'Jackson', '909 Oak St, Ogden, UT 84401', 'password987', 'user', 'david.jackson@guest.edu'),
+('faculty', 'Nancy', 'White', '1010 Pine Ln, Logan, UT 84321', 'password234', 'admin', 'nancy.white@university.edu'),
+('student', 'Daniel', 'Harris', '1111 Cedar St, St. George, UT 84770', 'password1234', 'user', 'daniel.harris@student.edu'),
+('guest', 'Jessica', 'Martin', '1212 Birch Ln, Sandy, UT 84070', 'password2345', 'user', 'jessica.martin@guest.edu'),
+('faculty', 'Christopher', 'Lee', '1313 Elm Rd, Salt Lake City, UT 84112', 'password345', 'admin', 'christopher.lee@university.edu'),
+('student', 'Karen', 'Perez', '1414 Oak Blvd, Orem, UT 84057', 'password4567', 'user', 'karen.perez@student.edu'),
+('guest', 'William', 'Clark', '1515 Pine Rd, Draper, UT 84020', 'password5678', 'user', 'william.clark@guest.edu'),
+('faculty', 'Elizabeth', 'Lewis', '1616 Maple Ave, Logan, UT 84321', 'password6789', 'admin', 'elizabeth.lewis@university.edu'),
+('student', 'Matthew', 'Walker', '1717 Cedar Blvd, Park City, UT 84060', 'password7890', 'user', 'matthew.walker@student.edu');
+
+
+
+-- Create Vehicle Table
+DROP TABLE IF EXISTS Vehicle;
+CREATE TABLE IF NOT EXISTS Vehicle (
+    VEHICLE_ID INT AUTO_INCREMENT PRIMARY KEY,
+	DRIVER_ID INT,
+    License_Plate VARCHAR(50),
+    Make VARCHAR(100),
+    Model VARCHAR(100),
+    Color VARCHAR(255),
+	Year INT,
+	FOREIGN KEY (DRIVER_ID) REFERENCES Driver(DRIVER_ID)
+);
+-- Vehicle Test Data
+INSERT INTO Vehicle (DRIVER_ID, License_Plate, Make, Model, Color, Year) VALUES
+(1, 'ABC123', 'Toyota', 'Corolla', 'Blue', 2020),
+(2, 'XYZ456', 'Honda', 'Civic', 'Red', 2021),
+(3, 'LMN789', 'Ford', 'Fusion', 'Green', 2019),
+(4, 'DEF321', 'Chevrolet', 'Malibu', 'Black', 2020),
+(5, 'GHI654', 'Nissan', 'Altima', 'White', 2022),
+(6, 'JKL987', 'Hyundai', 'Sonata', 'Silver', 2020),
+(7, 'MNO543', 'Mazda', 'CX-5', 'Gray', 2018),
+(8, 'PQR246', 'Subaru', 'Outback', 'Brown', 2021),
+(9, 'STU135', 'BMW', '3 Series', 'Blue', 2022),
+(10, 'VWX864', 'Audi', 'A4', 'Black', 2020),
+(11, 'YZA753', 'Toyota', 'Camry', 'Red', 2019),
+(12, 'BCD468', 'Kia', 'Optima', 'White', 2021),
+(13, 'EFG109', 'Ford', 'Escape', 'Blue', 2020),
+(14, 'HIJ876', 'Chevrolet', 'Equinox', 'Gray', 2022),
+(15, 'KLM543', 'Hyundai', 'Elantra', 'Green', 2021),
+(16, 'NOP258', 'Nissan', 'Maxima', 'Silver', 2020),
+(17, 'QRS147', 'Subaru', 'Forester', 'Yellow', 2022),
+(18, 'TUV963', 'Mazda', 'Mazda3', 'Orange', 2019),
+(19, 'WXY852', 'BMW', 'X5', 'Black', 2020),
+(20, 'ZAB852', 'Audi', 'Q5', 'Red', 2024);
+
+
+
+
+-- Create Payment Table
+DROP TABLE IF EXISTS Payment;
+CREATE TABLE IF NOT EXISTS Payment (
+    PAYMENT_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Credit_card_No VARCHAR(50),
+    Amount DECIMAL(10, 2),
+    Check_No VARCHAR(100),
+    Cash DECIMAL(10, 2),
+	Date DATE
+);
+-- Test Data for Payment
+INSERT INTO Payment (Credit_card_No, Amount, Check_No, Cash, Date) VALUES
+('4111111111111111', 50.00, '12345', 0.00, '2023-10-10'),
+('4222222222222222', 75.00, '67890', 0.00, '2023-10-12'),
+('4333333333333333', 150.00, '11223', 0.00, '2023-10-14'),
+('4444444444444444', 25.00, '44556', 0.00, '2023-10-16'),
+('4555555555555555', 100.00, '78901', 0.00, '2023-10-18');
+
+
+
+-- Create Permit Table
+DROP TABLE IF EXISTS Permit;
+CREATE TABLE IF NOT EXISTS Permit (
+    PERMIT_ID INT AUTO_INCREMENT PRIMARY KEY,
+	Permit_Type VARCHAR(100),
+	VEHICLE_ID INT,
+    Purchase_Date DATE,
+    Expiry_date DATE,
+    Cost DECIMAL(10, 2),
+    DRIVER_ID INT,
+	PAYMENT_ID INT,
+	FOREIGN KEY (VEHICLE_ID) REFERENCES Vehicle(VEHICLE_ID),
+    FOREIGN KEY (DRIVER_ID) REFERENCES Driver(DRIVER_ID),
+    FOREIGN KEY (PAYMENT_ID) REFERENCES Payment(PAYMENT_ID)
+);
+-- Test Data for Permit
+INSERT INTO Permit (Permit_Type, VEHICLE_ID, Purchase_Date, Expiry_Date, Cost, DRIVER_ID, PAYMENT_ID) VALUES
+('A', 1, '2023-08-01', '2024-08-01', 100.00, 1, 1),
+('U', 2, '2023-09-15', '2024-09-15', 50.00, 2, 2),
+('E', 3, '2023-10-01', '2024-10-01', 75.00, 3, 3),
+('A', 4, '2023-07-01', '2024-07-01', 100.00, 4, 4),
+('U', 5, '2023-10-05', '2024-10-05', 50.00, 5, 5);
+
+
+
+-- Create Violation Type Table
+DROP TABLE IF EXISTS Violation_Type;
+CREATE TABLE IF NOT EXISTS Violation_Type (
+    VIOLATION_TYPE_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Violation_Name VARCHAR(50),
+    Penalty_Amount DECIMAL(10, 2)
+);
+-- Test Data for Violation_Type
+INSERT INTO Violation_Type (Violation_Name, Penalty_Amount) VALUES
+('Expired Permit', 50.00),
+('No Permit', 75.00),
+('Parking in Disabled Spot', 150.00),
+('Overtime Parking', 25.00),
+('Unauthorized Area', 100.00);
+
+
+
+
+
+-- Create Violation Table
+DROP TABLE IF EXISTS Violation;
+CREATE TABLE IF NOT EXISTS Violation (
+    VIOLATION_ID INT AUTO_INCREMENT PRIMARY KEY,
+    VIOLATION_TYPE_ID INT,
+    Datetime DATETIME,
+	PAYMENT_ID INT,
+	FOREIGN KEY (PAYMENT_ID) REFERENCES Payment(PAYMENT_ID),
+	FOREIGN KEY (VIOLATION_TYPE_ID) REFERENCES Violation_Type(VIOLATION_TYPE_ID)
+);
+-- Test Data for Violation
+INSERT INTO Violation (VIOLATION_TYPE_ID, Datetime, PAYMENT_ID) VALUES
+(1, '2023-10-10 10:30:00', 1),
+(2, '2023-10-12 14:00:00', 2),
+(3, '2023-10-14 08:45:00', 3),
+(4, '2023-10-16 16:30:00', 4),
+(5, '2023-10-18 11:00:00', 5);
+
+
+
+
+-- Creating Parking Lot Table
+DROP TABLE IF EXISTS Parking_Lot;
+CREATE TABLE IF NOT EXISTS Parking_Lot (
+    LOT_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Permit_Type VARCHAR(100),
+    Address VARCHAR(255),
+    Capacity INT
+);
+-- Test Data for Parking Lot
+INSERT INTO Parking_Lot (Permit_Type, Address, Capacity) VALUES
+('A', 'Lot A, 123 University Ave, Salt Lake City, UT 84112', 100),
+('U', 'Lot B, 456 Campus Blvd, Provo, UT 84604', 50),
+('E', 'Lot C, 789 College Rd, Ogden, UT 84401', 30),
+('A', 'Lot D, 101 Main St, Salt Lake City, UT 84112', 200),
+('U', 'Lot E, 202 Maple Dr, St. George, UT 84770', 75);
+
+
+
+
+-- Create Parking Space Table
+DROP TABLE IF EXISTS Parking_Space;
+CREATE TABLE IF NOT EXISTS Parking_Space (
+    SPACE_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Field VARCHAR(100),
+	LOT_ID INT,
+	FOREIGN KEY (LOT_ID) REFERENCES Parking_Lot(LOT_ID)
+);
+-- Test Data for Parking Space
+INSERT INTO Parking_Space (Field, LOT_ID) VALUES
+('A1', 1),
+('B2', 2),
+('C3', 3),
+('D4', 4),
+('E5', 5);
+
+
+
+
+
+
+
+
+
+
+-- Create Users Table
+DROP TABLE IF EXISTS Users;
+CREATE TABLE IF NOT EXISTS Users (
+  forename varchar(128) NOT NULL,
+  surname varchar(128) NOT NULL,
+  username varchar(128) NOT NULL,
+  password varchar(255) NOT NULL,
+  PRIMARY KEY (username)  
+);
+-- Test Data for Users
+INSERT INTO Users (forename, surname, username, password) VALUES
+('Bryan', 'Smith', 'bsmith', 'mysecret'),
+('Paul', 'Jones', 'pjones', 'acrobat');
+
+
+
+
+-- Create Table for Roles
+DROP TABLE IF EXISTS Roles;
+CREATE TABLE IF NOT EXISTS Roles (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(100) NOT NULL,
+  role varchar(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+-- Test Data for Roles
+INSERT INTO Roles (username, role) VALUES
+('bsmith', 'admin'),
+('pjones', 'user');
