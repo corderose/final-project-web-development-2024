@@ -10,7 +10,6 @@ USE Parking_System;
 DROP TABLE IF EXISTS Driver;
 CREATE TABLE IF NOT EXISTS Driver (
     DRIVER_ID INT AUTO_INCREMENT PRIMARY KEY,
-    Type VARCHAR(50),
     First_name VARCHAR(100),
     Last_name VARCHAR(100),
     Address VARCHAR(255),
@@ -20,27 +19,28 @@ CREATE TABLE IF NOT EXISTS Driver (
 );
 
 -- Driver Table Test Data
-INSERT INTO Driver (Type, First_name, Last_name, Address, Password, Role, Email) VALUES
-('faculty', 'John', 'Doe', '123 University Ave, Salt Lake City, UT 84112', 'password123', 'admin', 'john.doe@university.edu'),
-('student', 'Jane', 'Smith', '456 Campus Blvd, Provo, UT 84604', 'password456', 'user', 'jane.smith@student.edu'),
-('guest', 'Alice', 'Johnson', '789 College Rd, Ogden, UT 84401', 'password789', 'user', 'alice.johnson@guest.edu'),
-('faculty', 'Bob', 'Brown', '101 Main St, Salt Lake City, UT 84112', 'password321', 'admin', 'bob.brown@university.edu'),
-('student', 'Mary', 'Davis', '202 Maple Dr, St. George, UT 84770', 'password654', 'user', 'mary.davis@student.edu'),
-('guest', 'James', 'Miller', '303 Oak Ln, Park City, UT 84060', 'password987', 'user', 'james.miller@guest.edu'),
-('faculty', 'Patricia', 'Wilson', '404 Pine St, Salt Lake City, UT 84112', 'password432', 'admin', 'patricia.wilson@university.edu'),
-('student', 'Michael', 'Moore', '505 Cedar Ave, Orem, UT 84057', 'password543', 'user', 'michael.moore@student.edu'),
-('guest', 'Linda', 'Taylor', '606 Birch Blvd, Draper, UT 84020', 'password654', 'user', 'linda.taylor@guest.edu'),
-('faculty', 'Charles', 'Anderson', '707 Elm St, Salt Lake City, UT 84112', 'password765', 'admin', 'charles.anderson@university.edu'),
-('student', 'Sarah', 'Thomas', '808 Maple Rd, Provo, UT 84604', 'password876', 'user', 'sarah.thomas@student.edu'),
-('guest', 'David', 'Jackson', '909 Oak St, Ogden, UT 84401', 'password987', 'user', 'david.jackson@guest.edu'),
-('faculty', 'Nancy', 'White', '1010 Pine Ln, Logan, UT 84321', 'password234', 'admin', 'nancy.white@university.edu'),
-('student', 'Daniel', 'Harris', '1111 Cedar St, St. George, UT 84770', 'password1234', 'user', 'daniel.harris@student.edu'),
-('guest', 'Jessica', 'Martin', '1212 Birch Ln, Sandy, UT 84070', 'password2345', 'user', 'jessica.martin@guest.edu'),
-('faculty', 'Christopher', 'Lee', '1313 Elm Rd, Salt Lake City, UT 84112', 'password345', 'admin', 'christopher.lee@university.edu'),
-('student', 'Karen', 'Perez', '1414 Oak Blvd, Orem, UT 84057', 'password4567', 'user', 'karen.perez@student.edu'),
-('guest', 'William', 'Clark', '1515 Pine Rd, Draper, UT 84020', 'password5678', 'user', 'william.clark@guest.edu'),
-('faculty', 'Elizabeth', 'Lewis', '1616 Maple Ave, Logan, UT 84321', 'password6789', 'admin', 'elizabeth.lewis@university.edu'),
-('student', 'Matthew', 'Walker', '1717 Cedar Blvd, Park City, UT 84060', 'password7890', 'user', 'matthew.walker@student.edu');
+INSERT INTO Driver (First_name, Last_name, Address, Password, Role, Email) VALUES
+('John', 'Doe', '123 University Ave, Salt Lake City, UT 84112', 'password123', 'admin', 'john.doe@university.edu'),
+('Jane', 'Smith', '456 Campus Blvd, Provo, UT 84604', 'password456', 'user', 'jane.smith@student.edu'),
+('Alice', 'Johnson', '789 College Rd, Ogden, UT 84401', 'password789', 'user', 'alice.johnson@guest.edu'),
+('Bob', 'Brown', '101 Main St, Salt Lake City, UT 84112', 'password321', 'admin', 'bob.brown@university.edu'),
+('Mary', 'Davis', '202 Maple Dr, St. George, UT 84770', 'password654', 'user', 'mary.davis@student.edu'),
+('James', 'Miller', '303 Oak Ln, Park City, UT 84060', 'password987', 'user', 'james.miller@guest.edu'),
+('Patricia', 'Wilson', '404 Pine St, Salt Lake City, UT 84112', 'password432', 'admin', 'patricia.wilson@university.edu'),
+('Michael', 'Moore', '505 Cedar Ave, Orem, UT 84057', 'password543', 'user', 'michael.moore@student.edu'),
+('Linda', 'Taylor', '606 Birch Blvd, Draper, UT 84020', 'password654', 'user', 'linda.taylor@guest.edu'),
+('Charles', 'Anderson', '707 Elm St, Salt Lake City, UT 84112', 'password765', 'admin', 'charles.anderson@university.edu'),
+('Sarah', 'Thomas', '808 Maple Rd, Provo, UT 84604', 'password876', 'user', 'sarah.thomas@student.edu'),
+('David', 'Jackson', '909 Oak St, Ogden, UT 84401', 'password987', 'user', 'david.jackson@guest.edu'),
+('Nancy', 'White', '1010 Pine Ln, Logan, UT 84321', 'password234', 'admin', 'nancy.white@university.edu'),
+('Daniel', 'Harris', '1111 Cedar St, St. George, UT 84770', 'password1234', 'user', 'daniel.harris@student.edu'),
+('Jessica', 'Martin', '1212 Birch Ln, Sandy, UT 84070', 'password2345', 'user', 'jessica.martin@guest.edu'),
+('Christopher', 'Lee', '1313 Elm Rd, Salt Lake City, UT 84112', 'password345', 'admin', 'christopher.lee@university.edu'),
+('Karen', 'Perez', '1414 Oak Blvd, Orem, UT 84057', 'password4567', 'user', 'karen.perez@student.edu'),
+('William', 'Clark', '1515 Pine Rd, Draper, UT 84020', 'password5678', 'user', 'william.clark@guest.edu'),
+('Elizabeth', 'Lewis', '1616 Maple Ave, Logan, UT 84321', 'password6789', 'admin', 'elizabeth.lewis@university.edu'),
+('Matthew', 'Walker', '1717 Cedar Blvd, Park City, UT 84060', 'password7890', 'user', 'matthew.walker@student.edu');
+
 
 
 
