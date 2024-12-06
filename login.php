@@ -2,7 +2,7 @@
 
 
 $hn = "localhost:3306"; 
-$db = "parking"; 
+$db = "Parking_System"; 
 $un = "root"; 
 $pw = ""; 
 
