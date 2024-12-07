@@ -58,7 +58,7 @@
                 <li><a href="permit.php">Permits</a></li>
                 <li><a href="vehicle.php">Vehicles</a></li>
                 <li><a href="violations.php">Violations</a></li>
-				<li><a href="personal_info.php">Personal Information</a></li>
+				<li><a href="personal_info1.php">Personal Information</a></li>
 				<li><a href="drivers.php">Drivers</a></li>
 				<li><a href="parking.php">Parking</a></li>
 				<li><a href="reports.php">Reports </a></li>

@@ -1,6 +1,8 @@
 <?php
 include 'db_connect.php'; // Include database connection
 include 'checksession.php'; // Ensure user is logged in
+include 'user.php';
+
 
 // Retrieve the logged-in user's username from the session
 $username = $_SESSION['username'] ?? null;
